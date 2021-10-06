@@ -1,0 +1,24 @@
+{
+  "name": "random-user-backend",
+  "version": "1.0.0",
+  "description": "Node and Express testing backend server simulating random user",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lukaCvitanovic/random-user-back.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lukaCvitanovic/random-user-back/issues"
+  },
+  "homepage": "https://github.com/lukaCvitanovic/random-user-back#readme",
+  "dependencies": {
+    "eslint": "^7.32.0",
+    "express": "^4.17.1"
+  }
+}
