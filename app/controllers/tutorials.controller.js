@@ -24,15 +24,15 @@ exports.create = (req, res) => {
     });
 };
 exports.findOne = (req, res) => {
-  const { id } = req.query;
+  const { id } = req.params;
 
   Tutorial.findByPk(id)
     .then((data) => (data ? res.send(data) : res.status(404).send({ message: `Cannot find Tutorial with id=${id}.` })))
     .catch((error) => res.status(500).send({ message: error.message || `Error retreving Tutorial with id=${id}.` }));
 };
 exports.findAll = (req, res) => {
-  const { title } = req.query.title;
-  let condition = title ? { title: { [Op.like]: `${title}` } } : null;
+  const { title } = req.query;
+  let condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
 
   Tutorial.findAll({ where: condition })
     .then((data) => res.send(data))
@@ -43,16 +43,16 @@ exports.findAll = (req, res) => {
     });
 };
 exports.update = (req, res) => {
-  const { id } = req.query;
+  const { id } = req.params;
 
   Tutorial.update(req.body, { where: { id } })
-    .then((num) => (num === 1
+    .then(([num]) => (num === 1
       ? res.send({ message: 'Tutorial was updated successfully.' })
       : res.send({ message: `Cannot update Tutorial with id=${id}. Maybe Tutorial was not found or req.body was empty.` })))
     .catch((error) => res.status(500).send({ message: error.message || `Error updating tutorial with id=${id}.` }));
 };
 exports.delete = (req, res) => {
-  const { id } = req.query;
+  const { id } = req.params;
 
   Tutorial.destroy({ where: { id } })
     .then((num) => (num === 1
@@ -65,8 +65,8 @@ exports.deleteAll = (req, res) => {
     .then((nums) => res.send({ message: `${nums} Tutorials deleted successfully.` }))
     .catch((error) => res.status(500).send({ message: error.message || 'Some error ocurred while deleting all Tutorials.' }));
 };
-exports.FindAllPublished = (req, res) => {
-  Tutorials.findAll({ where: { published: true } })
+exports.findAllPublished = (req, res) => {
+  Tutorial.findAll({ where: { published: true } })
     .then((data) => res.send(data))
     .catch((error) => res.status(500).send({ message: error.message || 'Some error ocurred while retreving tutorials.' }));
 };

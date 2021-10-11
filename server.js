@@ -23,6 +23,8 @@ app.get('/', (req, res) => {
   res.json({ message: 'Welcome' });
 });
 
+require('@/app/routes/tutorials.routes.js')(app);
+
 app.listen(port, () => {
-  console.log(`Server is listening on posrt ${port}`);
+  console.log(`Server is listening on port ${port}`);
 });
