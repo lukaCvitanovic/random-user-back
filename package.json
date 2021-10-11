@@ -18,7 +18,17 @@
   },
   "homepage": "https://github.com/lukaCvitanovic/random-user-back#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "eslint": "^7.32.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "module-alias": "^2.2.2",
+    "mysql2": "^2.3.0",
+    "sequelize": "^6.6.5"
+  },
+  "_moduleAliases": {
+    "@": "."
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.2.0"
   }
 }
