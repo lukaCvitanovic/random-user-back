@@ -5,7 +5,15 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "migration:create": "npx sequelize-cli model:generate",
+    "migration": "npx sequelize-cli db:migrate",
+    "migration:undo": "npx sequelize-cli db:migrate:undo",
+    "migration:undo-all": "npx sequelize-cli db:migrate:undo:all",
+    "seed:create": "npx sequelize-cli seed:generate --name",
+    "seed": "npx sequelize-cli db:seed:all",
+    "seed:undo": "npx sequelize-cli db:seed:undo",
+    "seed:undo-all": "npx sequelize-cli db:seed:undo:all"
   },
   "repository": {
     "type": "git",
@@ -21,14 +29,16 @@
     "cors": "^2.8.5",
     "eslint": "^7.32.0",
     "express": "^4.17.1",
+    "faker": "^6.6.6",
     "module-alias": "^2.2.2",
     "mysql2": "^2.3.0",
-    "sequelize": "^6.6.5"
+    "sequelize": "^6.6.5",
+    "umzug": "^3.0.0"
   },
   "_moduleAliases": {
     "@": "."
   },
   "devDependencies": {
-    "sequelize-cli": "^6.2.0"
+    "sequelize-cli": "^6.3.0"
   }
 }
