@@ -1,28 +1,21 @@
 const { Sequelize } = require('sequelize');
-const TitleValues = require('@/app/enums/title.enum');
-const GenderValues = require('@/app/enums/gender.enum');
 
 async function up({ context: queryInterface }) {
-	await queryInterface.createTable('Users', {
+	await queryInterface.createTable('Spots', {
 		id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: Sequelize.INTEGER
     },
-    firstName: {
+    name: {
       type: Sequelize.STRING
     },
-    lastName: {
-      type: Sequelize.STRING
+    lat: {
+      type: Sequelize.DOUBLE
     },
-    title: {
-      type: Sequelize.ENUM,
-      values: TitleValues,
-    },
-    gender: {
-      type: Sequelize.ENUM,
-      values: GenderValues, 
+    lng: {
+      type: Sequelize.DOUBLE
     },
     createdAt: {
       allowNull: false,
@@ -36,7 +29,7 @@ async function up({ context: queryInterface }) {
 }
 
 async function down(queryInterface) {
-	await queryInterface.dropTable('Users');
+	await queryInterface.dropTable('Spots');
 }
 
 module.exports = { up, down };

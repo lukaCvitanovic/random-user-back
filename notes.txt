@@ -1,0 +1,11 @@
+Spot
+    - id
+    - name
+    - latitude
+    - longitude
+Kategory
+    - id
+    - name
+Comment
+    - id
+    - value

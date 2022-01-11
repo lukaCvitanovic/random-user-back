@@ -22,10 +22,10 @@ const generateUser = () => {
 
 module.exports = {
   up: async ({ context: queryInterface }) => {
-    return queryInterface.bulkInsert('User', times(NUM_OF_USERS, generateUser));
+    return queryInterface.bulkInsert('Users', times(NUM_OF_USERS, generateUser));
   },
 
   down: async (queryInterface) => {
-    return queryInterface.bulkDelete('User', null, {});
+    return queryInterface.bulkDelete('Users', null, {});
   }
 };

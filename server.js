@@ -15,11 +15,6 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 
-// db.sequelize.sync({ force: true })
-//   .then(() => console.log('Drop and re-sync db.'));
-
-const User = require('@/app/models/users');
-
 const umzug = require('@/app/models/umzug');
 umzug().then(() => console.log('migrated and seeded'));
 
@@ -27,7 +22,8 @@ app.get('/', (req, res) => {
   res.json({ message: 'Welcome' });
 });
 
-require('@/app/routes/users.routes.js')(app);
+// require('@/app/routes/users.routes.js')(app);
+require('@/app/routes')(app);
 
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
