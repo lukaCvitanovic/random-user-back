@@ -60,8 +60,8 @@ exports.delete = (req, res) => {
     Spot.destroy({ where: { id } })
         .then((num) => (num === 1
             ? res.send({ message: 'Spot was successfully deleted.' })
-            : res.status(400).send({ message: `Cannot delete Spot with id=${id}. Maybe Spot was not found.` }))
-        .catch((error) => res.status(500).send({ message: error.message || `Cannot delete Spot with id=${id}.` })));
+            : res.status(400).send({ message: `Cannot delete Spot with id=${id}. Maybe Spot was not found.` })))
+        .catch((error) => res.status(500).send({ message: error.message || `Cannot delete Spot with id=${id}.` }));
 };
 
 exports.deleteAll = (req, res) => {
