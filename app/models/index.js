@@ -16,5 +16,6 @@ db.sequelize = sequelize;
 
 db.users = require('@/app/models/users')(sequelize, Sequelize.DataTypes);
 db.spots = require('@/app/models/spots')(sequelize, Sequelize.DataTypes);
+db.categories = require('@/app/models/categories')(sequelize, Sequelize.DataTypes);
 
 module.exports = db;
