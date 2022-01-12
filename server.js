@@ -22,7 +22,6 @@ app.get('/', (req, res) => {
   res.json({ message: 'Welcome' });
 });
 
-// require('@/app/routes/users.routes.js')(app);
 require('@/app/routes')(app);
 
 app.listen(port, () => {
