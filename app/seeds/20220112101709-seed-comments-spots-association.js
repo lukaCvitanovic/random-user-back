@@ -1,5 +1,4 @@
 'use strict';
-const cloneDeep = require('lodash/cloneDeep');
 const random = require('lodash/random');
 const times = require('lodash/times');
 
@@ -17,8 +16,7 @@ const generateAssociation = async (results, queryInterface) => {
   
   const bulkUpdates = [];
   times(count, (index) => {
-    const { [random(0, results.length)]: { id: insertedId } } = results;
-    console.log(insertedId, currentIndex);
+    const insertedId = results[random(0, results.length - 1)].id;
     bulkUpdates.push(queryInterface.bulkUpdate('Comments', {
       SpotId: insertedId
     }, {
