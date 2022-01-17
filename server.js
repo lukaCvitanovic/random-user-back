@@ -6,7 +6,7 @@ const port = 7000;
 const app = express();
 
 const conrsOptions = {
-  origin: 'http://localhost:7001',
+  origin: 'http://localhost:3000',
 };
 
 app.use(cors(conrsOptions));
