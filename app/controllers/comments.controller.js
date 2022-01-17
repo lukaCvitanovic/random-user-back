@@ -1,4 +1,4 @@
-const { comments: Comment, Sequelize: { Op } } = require('@/app/models');
+const { comments: Comment, Sequelize: { Op }, sequelize } = require('@/app/models');
 const isEmpty = require('lodash/isEmpty');
 
 exports.create = (req, res) => {
@@ -64,4 +64,16 @@ exports.deleteAll = (req, res) => {
     Comment.destroy({ where: {}, truncate: false })
         .then((nums) => res.send({ message: `${nums} comments deleted successfully.` })
         .catch((error) => res.status(500).send({ message: error.message || `Some error ocured while deleting all comments.` })));
+};
+
+// Examples and tests
+
+// Example of query/database functions
+// Example of finaAndCountAll method
+exports.findAndCountLongComments = (req, res) => {
+    Comment.findAndCountAll({
+        where: sequelize.where(sequelize.fn('char_length', sequelize.col('text')), 25)
+    })
+        .then((data) => res.send(data))
+        .catch((error) => res.status(500).send({ message: error.message || 'Error ocured while getting all Comments with longer text.' }));
 };

@@ -4,9 +4,9 @@ const router = require('express').Router();
 router.post('/', users.create);
 router.get('/', users.findAll);
 router.get('/published', users.findAllPublished);
-router.get('/:id', users.findOne);
-router.put('/:id', users.update);
+router.get('/:id(\\d+)', users.findOne);
+router.put('/:id(\\d+)', users.update);
 router.delete('/', users.deleteAll);
-router.delete('/:id', users.delete);
+router.delete('/:id(\\d+)', users.delete);
 
 module.exports = router;
